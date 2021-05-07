@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+    <th:block layout:fragment="head">
+        <title>Chat Login</title>
+    </th:block>
+</head>
+
+<body>
+    <div layout:fragment="content" class="container">
+        <div class="div_login">
+            <form id="" action="" method="post">
+            	<div>
+            		<div>
+            			<img id="img_login" src="../image/login.png" alt="login_image">
+            		</div>
+	            	<div>
+	            		<input type="text" class="input_text" id="m_id" name="m_id" placeholder="id">
+	            	</div>
+	            	<div class="input_wrap">
+	            		<input type="password" class="input_text" id="m_pw" name="m_pw" placeholder="pw">
+            			<i id="pw_change" class="fas fa-lock icon_change"></i>
+	            	</div>
+	            	<div>
+	            		<button type="button" id="btn_login" class="btn_login">login</button>
+           			</div>
+	            	<div>
+	            		<a href="#">아이디 찾기</a> |
+	            		<a href="#">비밀번호 찾기</a> |
+	            		<a href="#" id="go_join">회원가입</a>
+	            	</div>
+            	</div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<!-- 개별 js -->
+<script type="text/javascript" src="../js/login.js"></script>
+
+<!-- 개별 css-->
+<link rel="stylesheet" href="/css/memberCss.css"/>

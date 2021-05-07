@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lagn="ko"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  >
+
+	<!-- head 영역-->
+	<head th:replace="fragments/head :: headFragment">
+		<title layout:title-pattern="$CONTENT_TITLE">default</title>
+	</head>
+
+	<body>
+		<!-- [content] 영역 시작 -->
+		<div layout:fragment="content">
+		</div>
+		<!-- [content] 영역 끝 -->
+	</body>
+
+
+</html>
