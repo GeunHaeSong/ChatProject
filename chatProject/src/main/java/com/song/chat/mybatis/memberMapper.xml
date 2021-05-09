@@ -7,4 +7,23 @@
 		select count(*) from tbl_member
 		where m_id = #{m_id}
 	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insertMember">
+		insert into tbl_member(m_id, m_pw, m_name, m_birthday, m_phone)
+		values(#{m_id}, #{m_pw}, #{m_name}, #{m_birthday}, #{m_phone})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="loginCheck" resultType="integer">
+		select count(*) from tbl_member
+		where m_id = #{m_id} and m_pw = #{m_pw}
+	</select>
+	
+	<!-- 로그인 됐다고 상태 바꾸기 -->
+	<update id="loginStateCheck">
+		update tbl_member set
+			m_login_state = 'Y'
+		where m_id = #{m_id}
+	</update>
 </mapper>

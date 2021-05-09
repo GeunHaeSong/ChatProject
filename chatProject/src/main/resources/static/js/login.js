@@ -7,8 +7,9 @@ $(function() {
 	var pw_type = 1; 	
 	
 	$("#btn_login").click(function() {
-		console.log("클릭");
+		loginForm.submit();
 	});
+
 
 	// 자물쇠 아이콘을 누르면 pw의 타입을 바꿈
 	$(".input_wrap").on("click", "#pw_change", function() {
@@ -28,6 +29,6 @@ $(function() {
 	// 회원가입 폼으로
 	$("#go_join").click(function(e) {
 		e.preventDefault();
-		location.href = "/member/joinForm";
+		location.href = "/login/joinForm";
 	});
 });

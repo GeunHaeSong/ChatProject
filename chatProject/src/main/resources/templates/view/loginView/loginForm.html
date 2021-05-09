@@ -11,7 +11,7 @@
 <body>
     <div layout:fragment="content" class="container">
         <div class="div_login">
-            <form id="" action="" method="post">
+            <form id="loginForm" action="/login/loginRun" method="post">
             	<div>
             		<div>
             			<img id="img_login" src="../image/login.png" alt="login_image">
@@ -37,6 +37,22 @@
     </div>
 </body>
 </html>
+
+
+<script th:inline="javascript" type="text/javascript">
+	/*<![CDATA[*/
+	var join_result = [[${join_result}]];
+	if(join_result == "success") {
+		alert("회원가입 해주셔서 감사합니다. 로그인해주세요.");
+	}
+	
+	var login_result = [[${login_result}]];
+	if(login_result == "fail") {
+		alert("입력하신 정보가 잘못되었습니다. 다시 확인해주세요.");
+	}
+	/*]]>*/
+</script>
+
 <!-- 개별 js -->
 <script type="text/javascript" src="../js/login.js"></script>
 

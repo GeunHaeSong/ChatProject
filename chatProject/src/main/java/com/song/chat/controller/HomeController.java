@@ -10,6 +10,6 @@ public class HomeController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String mainView() throws Exception {
 		
-		return "view/member/loginForm";
+		return "view/loginView/loginForm";
 	}
 }

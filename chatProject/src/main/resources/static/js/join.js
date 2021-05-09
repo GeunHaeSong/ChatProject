@@ -4,6 +4,12 @@
 
 $(function() {
 	
+	var name_result = false;
+	var id_result = false;
+	var pw_result = false;
+	var pw2_result = false;
+	var check_result = false;
+	
 	// 생년월일 만들기
 	dateMaker();
 	
@@ -18,8 +24,10 @@ $(function() {
 		
 		if(name_rgx.test(m_name)) {
 			result = "success";
+			name_result = true;
 		} else {
 			result = "fail";
+			name_result = false;
 		}
 		resultMaker(result, parent_div);
 	});
@@ -33,16 +41,23 @@ $(function() {
 		var id_rgx = /^[a-z0-9]{5,15}$/;
 		if(!id_rgx.test(m_id)) {
 			resultMaker("fail", parent_div);
+			id_result = false;
 			return;
 		}
 		
 		// 같은 아이디가 존재하는지 에이잭스 체크
-		var url = "/member/idDupCheck";
+		var url = "/login/idDupCheck";
 		var sendDate = {
 			"m_id" : m_id	
 		};
 		$.get(url, sendDate, function(rData) {
-			resultMaker(rData, parent_div);
+			if(rData == "success") {
+				resultMaker("success", parent_div);
+				id_result = true;
+			} else {
+				resultMaker("fail", parent_div);
+				id_result = false;
+			}
 		});
 	});
 	
@@ -57,8 +72,10 @@ $(function() {
 		
 		if(pw_rgx.test(m_pw)) {
 			result = "success";
+			pw_result = true;
 		} else {
 			result = "fail";
+			pw_result = false;
 		}
 		resultMaker(result, parent_div);
 	});
@@ -73,14 +90,17 @@ $(function() {
 		var pw_rgx = /^[a-z0-9]{7,15}$/;
 		if(!pw_rgx.test(m_pw2)) {
 			resultMaker("fail", parent_div);
+			pw2_result = false;
 			return;
 		}
 		
 		var m_pw = $("#m_pw").val();
 		if(m_pw == m_pw2) {
 			result = "success";
+			pw2_result = true;
 		} else {
 			result = "fail";
+			pw2_result = false;
 		}
 		resultMaker(result, parent_div);
 	});
@@ -90,7 +110,7 @@ $(function() {
 		var phone = $("#m_phone").val();
 		var phone_rgx  = /^\d{3}\d{3,4}\d{4}$/;
 		if(phone_rgx.test(phone)) {
-			var url = "/member/smsSend";
+			var url = "/login/smsSend";
 			var sendDate = {
 					"phone" : phone
 			};
@@ -112,16 +132,40 @@ $(function() {
 		var sms_num = $(this).val();
 		if(sms_num.length < 1) {
 			resultMaker("fail", parent_div);
+			check_result = false;
 		}
 		
-		var url = "/member/smsCheck";
+		var url = "/login/smsCheck";
 		var sendDate = {
 				"sms_num" : sms_num
 		};
 		
 		$.get(url, sendDate, function(rData) {
-			resultMaker(rData, parent_div);
+			if(rData == "success") {
+				resultMaker(rData, parent_div);
+				check_result = true;
+			} else {
+				check_result = false;
+			}
 		});
+	});
+	
+	// 등록 버튼
+	$(".btn_login").click(function() {
+//		if(name_result == true && id_result == true && pw_result == true
+//			&& pw2_result == true && check_result == true) {
+//			joinForm.submit();
+//		}
+		// 테스트 용도(문자보내기 꺼둠)
+		if(name_result == true && id_result == true && pw_result == true
+				&& pw2_result == true) {
+			var yy = $("#yy_box option:selected").val();
+			var mm = $("#mm_box option:selected").val();
+			var dd = $("#dd_box option:selected").val();
+			var birthday = yy + mm + dd;
+			$("#m_birthday").val(birthday);
+			joinForm.submit();
+		}
 	});
 	
 	// 취소 버튼(로그인 페이지로 이동시키기)

@@ -1,0 +1,67 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+    <th:block layout:fragment="head">
+        <title>Chat myPage</title>
+    </th:block>
+    
+</head>
+
+<body>
+    <div layout:fragment="content" class="container">
+    	<div class="col-md-12" style="height: 100%;">
+    		<div class="row" style="height: 100%;">
+		    	<div class="side_bar col-md-1" style="border-right: 2px solid; height: 100%; background-color: #E6E6E6;">
+		    		<i class="fas fa-user icon"></i>
+		    		<i class="fas fa-comment-dots icon"></i>
+		    		<i class="fas fa-search icon"></i>
+		    		<i class="fas fa-cog icon"></i>
+		    	</div>
+		    	<div class="main col-md-11">
+					<div class="row" style="padding-top:3%;">
+						<div class="col-md-3">
+							자신 이미지
+						</div>
+						<div class="col-md-9" style="text-align: left;">
+							자신 이름
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div>
+								[이미지 영역]
+							</div>
+							<div>
+								[이미지 영역]
+							</div>
+							<div>
+								[이미지 영역]
+							</div>
+						</div>
+						<div class="col-md-9" style="text-align: left;">
+							<div>
+								[이름 영역]
+							</div>
+							<div>
+								[이름 영역]
+							</div>
+							<div>
+								[이름 영역]
+							</div>
+						</div>
+					</div>
+				</div>
+	    	</div>
+    	</div>
+    </div>
+</body>
+</html>
+
+
+<!-- 개별 js -->
+<!-- <script type="text/javascript" src="../js/login.js"></script> -->
+
+<!-- 개별 css-->
+<link rel="stylesheet" href="/css/home.css"/>

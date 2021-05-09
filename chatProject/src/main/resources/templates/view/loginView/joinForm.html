@@ -11,7 +11,8 @@
 <body>
     <div layout:fragment="content" class="container">
     	<div class="div_login">
-    		<form id="joinForm" action="" method="post">
+    		<form id="joinForm" action="/login/joinRun" method="post">
+    			<input type="hidden" id="m_birthday" name="m_birthday">
     			<div class="input_wrap">
     				<input type="text" id="m_name" name="m_name" class="input_text" placeholder="이름" maxlength="15">
     			</div>
@@ -50,6 +51,5 @@
 </html>
 <!-- 개별 js -->
 <script type="text/javascript" src="../js/join.js"></script>
-
 <!-- 개별 css-->
 <link rel="stylesheet" href="/css/memberCss.css"/>
